@@ -1,0 +1,9 @@
+scikit-learn
+pandas
+numpy
+networkx
+lightgbm
+gensim
+matplotlib
+seaborn
+markdown

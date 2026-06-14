@@ -51,7 +51,7 @@ with tab1:
     if not nodes_df.empty:
         # Display the network visualization image
         if os.path.exists(img_path):
-            st.image(img_path, caption="Network Hubs and Bottlenecks. Node size represents betweenness centrality, color intensity represents total delay.", use_container_width=True)
+            st.image(img_path, caption="Network Hubs and Bottlenecks. Node size represents betweenness centrality, color intensity represents total delay.", width='stretch')
             
         st.subheader("Interactive Hub Rankings")
         sort_by = st.selectbox(
@@ -62,7 +62,7 @@ with tab1:
         display_cols = ['node_id', 'name', 'betweenness_centrality', 'total_delay_minutes', 'total_sla_breaches', 'total_trips_handled']
         st.dataframe(
             nodes_df.sort_values(by=sort_by, ascending=(sort_by == "composite_rank"))[display_cols].head(20),
-            use_container_width=True
+            width='stretch'
         )
     else:
         st.write("No hub audit data found.")
@@ -74,7 +74,7 @@ with tab2:
     if not corridors_df.empty:
         st.dataframe(
             corridors_df[corridors_df['median_delay_ratio'] > 1.2].sort_values(by='sla_breach_count', ascending=False),
-            use_container_width=True
+            width='stretch'
         )
     else:
         st.write("No corridor audit data found.")
@@ -87,7 +87,7 @@ with tab3:
         st.subheader("Corridors with Both Route Types (Comparison)")
         st.dataframe(
             recs_df.sort_values(by='time_difference_mins', ascending=False),
-            use_container_width=True
+            width='stretch'
         )
         
         st.subheader("Predict Optimal Route Type")
